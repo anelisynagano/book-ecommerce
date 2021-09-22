@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import BookCard from "./components/BookCard";
+import BookList from "./components/BookList";
+import Favorites from "./components/Favorites";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -14,22 +15,27 @@ function App() {
 
   useEffect(fetchBooks, []);
 
-  const handleAddToFavs = (book) => {
-    setFavoriteBooks([...favoriteBooks, book]);
+  const handleAddToFavs = (bookInfo, isFav) => {
+    const isFavorite = favoriteBooks.find(
+      (favoriteBook) => favoriteBook.isbn13 === bookInfo.isbn13
+    );
+    if (!isFavorite) {
+      setFavoriteBooks([...favoriteBooks, bookInfo]);
+    }
+
+    const removeFav = favoriteBooks.filter(
+      (book) => book.isbn13 !== bookInfo.isbn13
+    );
+
+    if (isFav) {
+      setFavoriteBooks(removeFav);
+    }
   };
 
   return (
     <div>
-      <h2>Books Available</h2>
-      <div className='books-container'>
-        {books.map((book) => (
-          <BookCard
-            key={book.isbn13}
-            bookInfo={book}
-            handleAddToFavs={handleAddToFavs}
-          />
-        ))}
-      </div>
+      <Favorites favoriteBooks={favoriteBooks} />
+      <BookList books={books} handleAddToFavs={handleAddToFavs} />
     </div>
   );
 }

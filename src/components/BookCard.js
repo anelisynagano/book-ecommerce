@@ -5,7 +5,7 @@ const BookCard = ({ bookInfo, handleAddToFavs }) => {
 
   const handleClickFav = () => {
     setIsFav(!isFav);
-    handleAddToFavs(bookInfo);
+    handleAddToFavs(bookInfo, isFav);
   };
 
   return (
