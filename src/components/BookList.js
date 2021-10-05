@@ -1,6 +1,6 @@
 import BookCard from "./BookCard";
 
-const BookList = ({ books, handleAddToFavs }) => {
+const BookList = ({ books, handleAddToFavs, handleAddToCart }) => {
   return (
     <>
       <h2>Books Available</h2>
@@ -10,6 +10,7 @@ const BookList = ({ books, handleAddToFavs }) => {
             key={book.isbn13}
             bookInfo={book}
             handleAddToFavs={handleAddToFavs}
+            handleAddToCart={handleAddToCart}
           />
         ))}
       </div>

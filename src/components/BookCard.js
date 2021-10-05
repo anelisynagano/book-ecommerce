@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookCard = ({ bookInfo, handleAddToFavs }) => {
+const BookCard = ({ bookInfo, handleAddToFavs, handleAddToCart }) => {
   const [isFav, setIsFav] = useState(false);
 
   const handleClickFav = () => {
@@ -17,7 +17,7 @@ const BookCard = ({ bookInfo, handleAddToFavs }) => {
       <p>{bookInfo.title}</p>
       <div className='book-card-container'>
         <p>{bookInfo.price}</p>
-        <button>Cart</button>
+        <button onClick={() => handleAddToCart(bookInfo)}>Cart</button>
       </div>
     </div>
   );
