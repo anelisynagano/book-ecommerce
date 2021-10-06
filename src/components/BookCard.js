@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BookCard = ({ bookInfo, handleAddToFavs, handleAddToCart }) => {
   const [isFav, setIsFav] = useState(false);
@@ -11,7 +12,9 @@ const BookCard = ({ bookInfo, handleAddToFavs, handleAddToCart }) => {
   return (
     <div className='book-card'>
       <div className='book-card-container'>
-        <img src={bookInfo.image} alt='book-cover' />
+        <Link to={`/books/${bookInfo.isbn13}`}>
+          <img src={bookInfo.image} alt='book-cover' />
+        </Link>
         <p onClick={handleClickFav}>{isFav ? "❤️" : "🤍"}</p>
       </div>
       <p>{bookInfo.title}</p>
