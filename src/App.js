@@ -56,7 +56,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar price={price} />
+        <Navbar price={price.toFixed(2)} />
         <Switch>
           <Route exact path='/'>
             <BookList
@@ -66,11 +66,11 @@ function App() {
             />
           </Route>
           <Route path='/cart'>
-            <Cart cartItems={cartItems} price={price} />
+            <Cart cartItems={cartItems} price={price.toFixed(2)} />
           </Route>
           <Route
             path='/favorites'
-            render={() => <Favorites favoriteBooks={favoriteBooks} />}
+            render={() => <Favorites favoriteBooks={favoriteBooks} handleAddToFavs={handleAddToFavs} handleAddToCart={handleAddToCart} />}
           />
           <Route
             path='/books/:isbn13'
