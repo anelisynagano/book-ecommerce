@@ -13,8 +13,10 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [price, setPrice] = useState(0);
 
+  const [userInfo, setUserInfo] = useState({ name: "my user" });
+
   const fetchBooks = () => {
-    fetch("https://api.itbook.store/1.0/new")
+    fetch("http://localhost:8000/")
       .then((res) => res.json())
       .then((data) => setBooks(data.books));
   };
@@ -56,7 +58,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Navbar price={price} />
+        <Navbar price={price.toFixed(2)} />
         <Switch>
           <Route exact path='/'>
             <BookList
@@ -66,11 +68,17 @@ function App() {
             />
           </Route>
           <Route path='/cart'>
-            <Cart cartItems={cartItems} price={price} />
+            <Cart cartItems={cartItems} price={price.toFixed(2)} />
           </Route>
           <Route
             path='/favorites'
-            render={() => <Favorites favoriteBooks={favoriteBooks} />}
+            render={() => (
+              <Favorites
+                handleAddToFavs={handleAddToFavs}
+                handleAddToCart={handleAddToCart}
+                favoriteBooks={favoriteBooks}
+              />
+            )}
           />
           <Route
             path='/books/:isbn13'

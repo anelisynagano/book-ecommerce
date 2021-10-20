@@ -1,10 +1,10 @@
 const CartItem = ({ bookInfo }) => {
   return (
-    <div className='cart-item'>
-      <div>{bookInfo.title}</div>
-      <div>{bookInfo.quantity}</div>
-      <div>{bookInfo.price}</div>
-    </div>
+    <tr>
+      <td>{bookInfo.title}</td>
+      <td>{bookInfo.quantity}</td>
+      <td>{bookInfo.price}</td>
+    </tr>
   );
 };
 

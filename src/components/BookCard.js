@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const BookCard = ({ bookInfo, handleAddToFavs, handleAddToCart }) => {
-  const [isFav, setIsFav] = useState(false);
+const BookCard = ({
+  bookInfo,
+  handleAddToFavs,
+  handleAddToCart,
+  isFavorite,
+}) => {
+  const [isFav, setIsFav] = useState(isFavorite);
 
   const handleClickFav = () => {
     setIsFav(!isFav);

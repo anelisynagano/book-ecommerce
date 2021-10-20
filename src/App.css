@@ -1,3 +1,21 @@
+* {
+  font-family: "Cormorant Garamond", serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar {
+  border: 1px solid black;
+}
+
+table {
+  width: 65%;
+  margin: auto;
+}
+
 .book-card-container {
   display: flex;
   justify-content: space-between;
